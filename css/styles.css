@@ -1,28 +1,4 @@
 /* Class selector */
-.class-edit{
-    color:aliceblue;
-}
-
-.font-fam {
-    font-family: 'Poppins', sans-serif;
-    ;
-}
-
-#center-align{
-    text-align: center;
-    border: 1px solid black;
-}
-
-.pure-u-1-3 img {
-    width: 30vw;
-    height: 30vw;
-}
-
-.pure-u-1-3 {
-    margin-top: 30px;
-    height: 30vw;
-}
-
 #map_plot {
 	top:100px;
 	bottom: 100px; 

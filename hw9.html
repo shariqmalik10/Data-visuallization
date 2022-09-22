@@ -4,17 +4,7 @@
         <title>
             Homework Week 9 Map
         </title>
-        <link rel="stylesheet" href="css/styles.css">
-
-        <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css" />
-
-        <link rel="preconnect" href="https://fonts.googleapis.com"> 
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
-
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/pure-min.css" integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZdMEtBvGzmf0PKiGyNEqe9N6BNDBH" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/grids-responsive-min.css" />
+        <link rel="stylesheet" href="css/styles.css" media="all">
 
         <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
         <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
@@ -22,11 +12,11 @@
 
     </head>
     <body>
-        <div id="map-plot"></div>
+        <div id="map_plot"></div>
 
         <script type="text/javascript">
         var spec2 = "js/visualization.vg.json";
-        vegaEmbed('#map-plot', spec2).then(function(result) {
+        vegaEmbed('#map_plot', spec2).then(function(result) {
         // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         }).catch(console.error);
         </script>
