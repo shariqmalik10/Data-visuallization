@@ -1,0 +1,119 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "background": "white",
+  "padding": 5,
+  "width": 800,
+  "height": 400,
+  "title": {
+    "text": "Total Number of Laps Driven per Country",
+    "frame": "group"
+  },
+  "data": [
+    {
+      "name": "source_1",
+      "url": "https://raw.githubusercontent.com/shariqmalik10/FIT3179-Week9-HW/master/data/race_summaries_aggregate.csv",
+      "format": {"type": "csv", "delimiter": ","}
+    },
+    {
+      "name": "source_0",
+      "url": "https://raw.githubusercontent.com/shariqmalik10/FIT3179-Week9-HW/master/js/ne.json",
+      "format": {
+        "type": "topojson",
+        "feature": "ne_110m_admin_0_countries",
+        "parse": {}
+      },
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "datum[\"properties\"] && datum[\"properties\"][\"NAME\"]",
+          "as": "properties.NAME"
+        }
+      ]
+    },
+    {
+      "name": "data_0",
+      "source": "source_0",
+      "transform": [
+        {
+          "type": "lookup",
+          "from": "source_1",
+          "key": "Grand Prix",
+          "fields": ["properties.NAME"],
+          "values": ["Total Laps"]
+        },
+        {
+          "type": "filter",
+          "expr": "isValid(datum[\"Total Laps\"]) && isFinite(+datum[\"Total Laps\"])"
+        }
+      ]
+    }
+  ],
+  "projections": [
+    {
+      "name": "projection",
+      "size": {"signal": "[width, height]"},
+      "fit": {"signal": "[data('source_0'), data('data_0')]"},
+      "type": "equalEarth"
+    }
+  ],
+  "marks": [
+    {
+      "name": "layer_0_marks",
+      "type": "shape",
+      "style": ["geoshape"],
+      "from": {"data": "source_0"},
+      "encode": {
+        "update": {
+          "fill": {"value": "lightgray"},
+          "stroke": {"value": "white"},
+          "tooltip": {
+            "signal": "isValid(datum[\"note\"]) ? datum[\"note\"] : \"\"+datum[\"note\"]"
+          },
+          "ariaRoleDescription": {"value": "geoshape"},
+          "description": {
+            "signal": "\"note: \" + (isValid(datum[\"note\"]) ? datum[\"note\"] : \"\"+datum[\"note\"])"
+          }
+        }
+      },
+      "transform": [{"type": "geoshape", "projection": "projection"}]
+    },
+    {
+      "name": "layer_1_marks",
+      "type": "shape",
+      "style": ["geoshape"],
+      "from": {"data": "data_0"},
+      "encode": {
+        "update": {
+          "stroke": {"value": "white"},
+          "fill": {"scale": "color", "field": "Total Laps"},
+          "tooltip": {
+            "signal": "{\"Grand Prix\": isValid(datum[\"properties.NAME\"]) ? datum[\"properties.NAME\"] : \"\"+datum[\"properties.NAME\"], \"Total Laps\": format(datum[\"Total Laps\"], \"\")}"
+          },
+          "ariaRoleDescription": {"value": "geoshape"},
+          "description": {
+            "signal": "\"Total Laps: \" + (format(datum[\"Total Laps\"], \"\")) + \"; Grand Prix: \" + (isValid(datum[\"properties.NAME\"]) ? datum[\"properties.NAME\"] : \"\"+datum[\"properties.NAME\"])"
+          }
+        }
+      },
+      "transform": [{"type": "geoshape", "projection": "projection"}]
+    }
+  ],
+  "scales": [
+    {
+      "name": "color",
+      "type": "linear",
+      "domain": [0, 10000],
+      "range": "heatmap",
+      "interpolate": "hcl",
+      "zero": true
+    }
+  ],
+  "legends": [
+    {
+      "fill": "color",
+      "gradientLength": {"signal": "clamp(height, 64, 200)"},
+      "title": "Total Laps"
+    }
+  ],
+  "config": {}
+}

@@ -22,15 +22,13 @@
 
     </head>
     <body>
-        <div id="symbol_map"></div>
+        <div id="visualization"></div>
 
         <script type="text/javascript">
-        var spec2 = "js/ne_110m.json";
+        var spec2 = "js/visualization.vg.json";
         vegaEmbed('#map-plot', spec2).then(function(result) {
         // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         }).catch(console.error);
         </script>
-
-        
     </body>
 </html>
