@@ -8,6 +8,7 @@
     "url": "https://raw.githubusercontent.com/shariqmalik10/shariqmalik10.github.io/master/data/top10_maxvac.csv"
   },
   "layer":[
+    
     {
       "params": [{
         "name": "Select",
