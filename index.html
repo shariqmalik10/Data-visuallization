@@ -11,6 +11,7 @@
     <body>
         <h1>Vega Lite Chart</h1>
         <div id="map_plot"></div>
+        <div id="map_plot2"></div>
         
         <script type="text/javascript">
 
@@ -19,7 +20,7 @@
         vegaEmbed('#map_plot', spec2).then(function(result) {
         // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         }).catch(console.error);
-        vegaEmbed('#map_plot', spec3).then(function(result) {
+        vegaEmbed('#map_plot2', spec3).then(function(result) {
         // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         }).catch(console.error);
         </script>
