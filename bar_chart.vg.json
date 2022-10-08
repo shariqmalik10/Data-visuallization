@@ -1,0 +1,57 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Top 10 countries with highest number of vaccinations",
+  "description": "A simple bar chart with embedded data.",
+  "width": 400,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/shariqmalik10/shariqmalik10.github.io/master/data/top10_maxvac.csv"
+  },
+  "layer":[
+    {
+    "mark": "bar",
+    "encoding": {
+    "x": {"field": "country", "type": "nominal"},
+    "y": {"field": "total_vaccinations", "type": "quantitative", "title": "vaccinations"},
+    "tooltip": [
+      {"field": "country", "type": "nominal", "title": "Country"},
+      {"field": "total_vaccinations", "type": "quantitative", "title": "Total Vaccinations"}
+    ]
+    }
+    },
+    {
+      "mark":{
+        "type": "text",
+        "align": "right",
+        "baseline":"middle",
+        "fontSize": 11.5,
+        "dx": -55,
+        "dy": -190,
+        "fontStyle": "italic"
+      },
+      "transform":[
+        {
+          "calculate": "datum['country'] + ';' + datum['total_vaccinations']",
+          "as": "annotate"
+        },
+        {"calculate": "split(datum.annotate, ';')", "as": "vacnum"}
+      ],
+      "encoding": {
+        "text": {"field": "vacnum"},
+        "color": {"value": "orange"},
+        "opacity": {
+          "condition":{
+            "test": "datum['country'] == 'China'",
+            "value":1
+          },
+          "value":0
+        }
+      }
+    }
+
+  ]
+  
+  
+
+ 
+}
