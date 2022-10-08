@@ -9,15 +9,27 @@
   },
   "layer":[
     {
-    "mark": "bar",
-    "encoding": {
-    "x": {"field": "country", "type": "nominal"},
-    "y": {"field": "total_vaccinations", "type": "quantitative", "title": "vaccinations"},
-    "tooltip": [
-      {"field": "country", "type": "nominal", "title": "Country"},
-      {"field": "total_vaccinations", "type": "quantitative", "title": "Total Vaccinations"}
-    ]
-    }
+      "params": [{
+        "name": "Select",
+        "select": {"type": "point", "fields": ["Continent"]},
+        "bind": {"input": "select", "options": ["null", "Europe", "Asia", "North America", "South America", "Oceania"]}
+      }],
+      "mark": "bar",
+      "encoding": {
+      "x": {"field": "country", "type": "nominal"},
+      "y": {"field": "total_vaccinations", "type": "quantitative", "title": "vaccinations"},
+      "color":{
+        "condition": {
+          "param": "Select",
+          "field": "Continent", "type": "nominal" 
+        },
+        "value": "grey"
+      },
+      "tooltip": [
+        {"field": "country", "type": "nominal", "title": "Country"},
+        {"field": "total_vaccinations", "type": "quantitative", "title": "Total Vaccinations"}
+      ]
+      }
     },
     {
       "mark":{
@@ -50,8 +62,5 @@
     }
 
   ]
-  
-  
-
  
 }
