@@ -1,0 +1,13 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Top 10 countries with highest number of vaccinations",
+  "description": "A simple bar chart with embedded data.",
+  "data": {
+    "url": "https://raw.githubusercontent.com/shariqmalik10/shariqmalik10.github.io/master/data/top10_maxvac.csv"
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "country", "type": "nominal"},
+    "y": {"field": "total_vaccinations", "type": "quantitative", "title": "vaccinations"}
+  }
+}
