@@ -13,7 +13,7 @@
       "params": [{
         "name": "Select",
         "select": {"type": "point", "fields": ["Continent"]},
-        "bind": {"input": "select", "options": ["null", "Europe", "Asia", "North America", "South America", "Oceania"]}
+        "bind": {"input": "select", "options": ["Show all", "Europe", "Asia", "North America", "South America", "Oceania"]}
       }],
       "mark": "bar",
       "encoding": {
